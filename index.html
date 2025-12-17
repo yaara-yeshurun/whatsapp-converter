@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ממיר מספרים לוואטסאפ</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#25D366">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="WhatsApp">
+    
+    <!-- App Icon -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2325D366'/><path d='M50 20c-16.5 0-30 13.5-30 30 0 5.3 1.4 10.3 3.8 14.6L20 78l13.8-3.6C37.9 76.8 43.8 78 50 78c16.5 0 30-13.5 30-30S66.5 20 50 20zm15.3 42.7c-.7 1.9-3.4 3.5-5.6 4-1.5.3-3.5.6-10.1-2.2-8.5-3.5-14-12.2-14.4-12.8-.4-.6-3.4-4.5-3.4-8.6s2.1-6.1 2.9-6.9c.7-.8 1.6-1 2.1-1 .5 0 1.1 0 1.5.1.5 0 1.2-.2 1.9 1.4.7 1.7 2.4 5.9 2.6 6.3.2.4.3.9.1 1.4-.2.5-.4.8-.7 1.2-.4.4-.8.9-1.1 1.2-.4.3-.8.7-.3 1.4.4.7 2 3.3 4.3 5.3 3 2.6 5.5 3.4 6.3 3.8.7.4 1.2.3 1.6-.2.4-.5 1.8-2.1 2.3-2.8.5-.7 1-.6 1.6-.4.6.2 3.9 1.8 4.5 2.2.7.3 1.2.5 1.4.8.1.6.1 2.2-.6 4.1z' fill='white'/></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2325D366'/><path d='M50 20c-16.5 0-30 13.5-30 30 0 5.3 1.4 10.3 3.8 14.6L20 78l13.8-3.6C37.9 76.8 43.8 78 50 78c16.5 0 30-13.5 30-30S66.5 20 50 20zm15.3 42.7c-.7 1.9-3.4 3.5-5.6 4-1.5.3-3.5.6-10.1-2.2-8.5-3.5-14-12.2-14.4-12.8-.4-.6-3.4-4.5-3.4-8.6s2.1-6.1 2.9-6.9c.7-.8 1.6-1 2.1-1 .5 0 1.1 0 1.5.1.5 0 1.2-.2 1.9 1.4.7 1.7 2.4 5.9 2.6 6.3.2.4.3.9.1 1.4-.2.5-.4.8-.7 1.2-.4.4-.8.9-1.1 1.2-.4.3-.8.7-.3 1.4.4.7 2 3.3 4.3 5.3 3 2.6 5.5 3.4 6.3 3.8.7.4 1.2.3 1.6-.2.4-.5 1.8-2.1 2.3-2.8.5-.7 1-.6 1.6-.4.6.2 3.9 1.8 4.5 2.2.7.3 1.2.5 1.4.8.1.6.1 2.2-.6 4.1z' fill='white'/></svg>">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="data:application/json,{%22name%22:%22WhatsApp%20Converter%22,%22short_name%22:%22WhatsApp%22,%22start_url%22:%22.%22,%22display%22:%22standalone%22,%22background_color%22:%22%2325D366%22,%22theme_color%22:%22%2325D366%22,%22icons%22:[{%22src%22:%22data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2325D366'/%3E%3Cpath d='M50 20c-16.5 0-30 13.5-30 30 0 5.3 1.4 10.3 3.8 14.6L20 78l13.8-3.6C37.9 76.8 43.8 78 50 78c16.5 0 30-13.5 30-30S66.5 20 50 20zm15.3 42.7c-.7 1.9-3.4 3.5-5.6 4-1.5.3-3.5.6-10.1-2.2-8.5-3.5-14-12.2-14.4-12.8-.4-.6-3.4-4.5-3.4-8.6s2.1-6.1 2.9-6.9c.7-.8 1.6-1 2.1-1 .5 0 1.1 0 1.5.1.5 0 1.2-.2 1.9 1.4.7 1.7 2.4 5.9 2.6 6.3.2.4.3.9.1 1.4-.2.5-.4.8-.7 1.2-.4.4-.8.9-1.1 1.2-.4.3-.8.7-.3 1.4.4.7 2 3.3 4.3 5.3 3 2.6 5.5 3.4 6.3 3.8.7.4 1.2.3 1.6-.2.4-.5 1.8-2.1 2.3-2.8.5-.7 1-.6 1.6-.4.6.2 3.9 1.8 4.5 2.2.7.3 1.2.5 1.4.8.1.6.1 2.2-.6 4.1z' fill='white'/%3E%3C/svg%3E%22,%22sizes%22:%22512x512%22,%22type%22:%22image/svg+xml%22}]}">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            /* Prevent pull-to-refresh on mobile */
+            overscroll-behavior: contain;
+            /* Ensure safe area for notched devices */
+            padding-top: max(20px, env(safe-area-inset-top));
+            padding-bottom: max(20px, env(safe-area-inset-bottom));
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #128C7E;
+            margin-bottom: 10px;
+            font-size: 28px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 18px;
+            transition: border-color 0.3s;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #25D366;
+        }
+        
+        .hint {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+        
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background: #128C7E;
+        }
+        
+        button:active {
+            transform: scale(0.98);
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            display: none;
+        }
+        
+        .result.show {
+            display: block;
+        }
+        
+        .result-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .result-value {
+            font-size: 16px;
+            color: #333;
+            font-family: monospace;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .error {
+            color: #d32f2f;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .error.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔄 ממיר מספרים לוואטסאפ</h1>
+        <p class="subtitle">הכנס מספר טלפון ופתח שיחת WhatsApp</p>
+        
+        <div class="input-group">
+            <label for="phone">מספר טלפון</label>
+            <input 
+                type="text" 
+                id="phone" 
+                placeholder="050-1234567 או 972501234567"
+                autocomplete="off"
+            >
+            <div class="hint">ניתן להכניס עם או בלי מקפים, עם או בלי קידומת בינלאומית</div>
+        </div>
+        
+        <button onclick="convertAndOpen()">פתח שיחת WhatsApp</button>
+        
+        <div class="error" id="error"></div>
+        
+        <div class="result" id="result">
+            <div class="result-label">מספר מעוצב:</div>
+            <div class="result-value" id="formatted"></div>
+            
+            <div class="result-label">קישור WhatsApp:</div>
+            <div class="result-value" id="link"></div>
+        </div>
+    </div>
+
+    <script>
+        function cleanPhone(phone) {
+            // הסר רווחים ומקפים
+            return phone.replace(/[\s\-]/g, '');
+        }
+        
+        function formatToInternational(phone) {
+            let cleaned = cleanPhone(phone);
+            
+            // אם מתחיל ב-+, הסר אותו
+            if (cleaned.startsWith('+')) {
+                cleaned = cleaned.substring(1);
+            }
+            
+            // אם מתחיל ב-00, המר ל-+
+            if (cleaned.startsWith('00')) {
+                cleaned = cleaned.substring(2);
+            }
+            
+            // אם מתחיל ב-0 (מספר ישראלי מקומי)
+            if (cleaned.startsWith('0')) {
+                cleaned = '972' + cleaned.substring(1);
+            }
+            
+            // אם לא מתחיל ב-972 ואורכו מתאים למספר ישראלי, הוסף 972
+            if (!cleaned.startsWith('972') && cleaned.length === 9) {
+                cleaned = '972' + cleaned;
+            }
+            
+            // בדוק שהמספר מכיל רק ספרות
+            if (!/^\d+$/.test(cleaned)) {
+                throw new Error('המספר מכיל תווים לא חוקיים');
+            }
+            
+            // בדוק אורך מינימלי
+            if (cleaned.length < 10) {
+                throw new Error('המספר קצר מדי');
+            }
+            
+            return cleaned;
+        }
+        
+        function convertAndOpen() {
+            const input = document.getElementById('phone');
+            const error = document.getElementById('error');
+            const result = document.getElementById('result');
+            const formatted = document.getElementById('formatted');
+            const link = document.getElementById('link');
+            
+            // נקה הודעות קודמות
+            error.classList.remove('show');
+            result.classList.remove('show');
+            
+            try {
+                const phone = input.value.trim();
+                
+                if (!phone) {
+                    throw new Error('נא להכניס מספר טלפון');
+                }
+                
+                const international = formatToInternational(phone);
+                const whatsappUrl = `https://wa.me/${international}`;
+                
+                // הצג תוצאות
+                formatted.textContent = '+' + international;
+                link.textContent = whatsappUrl;
+                result.classList.add('show');
+                
+                // פתח את WhatsApp
+                window.open(whatsappUrl, '_blank');
+                
+            } catch (e) {
+                error.textContent = '❌ ' + e.message;
+                error.classList.add('show');
+            }
+        }
+        
+        // אפשר Enter לשליחה
+        document.getElementById('phone').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                convertAndOpen();
+            }
+        });
+    </script>
+</body>
+</html>
